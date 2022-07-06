@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -19,8 +20,8 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 	
-	@Column(name="c_code")
-	private String code;
+	@Column(name="id_airport")
+	private long id_airport;
 	
 	@Column(name="c_name")
 	private String name;
@@ -28,8 +29,9 @@ public class Country {
 	@OneToOne(mappedBy = "country")
 	private Employee employee;
 	
-	@OneToMany(mappedBy = "country")
-	private List<Airport> airports;
+	@OneToMany
+	@JoinColumn(name="id_airport", insertable=false, updatable=false)
+	private List<Airport> airport;
 
 	public long getId() {
 		return id;
@@ -39,12 +41,12 @@ public class Country {
 		this.id = id;
 	}
 
-	public String getCode() {
-		return code;
+	public long getId_airport() {
+		return id_airport;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setId_airport(long id_airport) {
+		this.id_airport = id_airport;
 	}
 
 	public String getName() {
@@ -54,5 +56,5 @@ public class Country {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 }

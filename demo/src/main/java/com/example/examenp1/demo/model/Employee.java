@@ -8,8 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,15 +26,19 @@ public class Employee {
 	@Column(name="firstname")
 	private String firstname;
 	
+	@Column(name="id_country")
+	private long id_country;
+	
+	@Column(name="id_language")
+	private long id_language;
+
+	@OneToMany
+	@JoinColumn(name="id_language", insertable=false, updatable=false)
+	private List<Language> language;
+	
 	@OneToOne
-	@JoinColumn(name = "id_country")
+	@JoinColumn(name = "id_country", insertable=false, updatable=false)
 	private Country country;
-	
-	@ManyToMany
-	@JoinTable(name = "Employee_Language", joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"),
-				inverseJoinColumns = @JoinColumn(name = "language_id", referencedColumnName = "id"))
-	private List<Language> languages;
-	
 
 	public long getId() {
 		return id;
@@ -60,5 +63,21 @@ public class Employee {
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-	
+
+	public long getId_country() {
+		return id_country;
+	}
+
+	public void setId_country(long id_country) {
+		this.id_country = id_country;
+	}
+
+	public long getId_language() {
+		return id_language;
+	}
+
+	public void setId_language(long id_language) {
+		this.id_language = id_language;
+	}	
+
 }

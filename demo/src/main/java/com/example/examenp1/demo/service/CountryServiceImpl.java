@@ -25,7 +25,6 @@ public class CountryServiceImpl implements CountryService{
 		if (countryDb.isPresent()) {
 			Country countryUpdate = countryDb.get();
 			countryUpdate.setId(country.getId());
-			countryUpdate.setCode(country.getCode());
 			countryUpdate.setName(country.getName());
 
 			return countryUpdate;

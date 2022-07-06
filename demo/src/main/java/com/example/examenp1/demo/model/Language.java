@@ -1,13 +1,12 @@
 package com.example.examenp1.demo.model;
 
-import java.util.List;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,14 +17,11 @@ public class Language {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 	
-	@Column(name="l_code")
-	private String code;
-	
 	@Column(name="l_name")
 	private String name;
 	
-	@ManyToMany(mappedBy = "languages")
-	private List<Employee> employees;
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Employee employee;
 
 	public long getId() {
 		return id;
@@ -35,14 +31,6 @@ public class Language {
 		this.id = id;
 	}
 
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -50,5 +38,5 @@ public class Language {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 }

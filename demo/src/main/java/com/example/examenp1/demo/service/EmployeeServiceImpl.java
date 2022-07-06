@@ -60,6 +60,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 			throw new ResourceNotFoundException("Record not found with id : " + employeeId);
 		}
 	}
+
+	@Override
+	public Employee createEmployee(Employee employee) {
+		return employeeRepository.save(employee);
+	}
 	
 	
 }

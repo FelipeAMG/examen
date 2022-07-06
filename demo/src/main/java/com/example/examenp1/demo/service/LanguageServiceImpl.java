@@ -25,7 +25,6 @@ public class LanguageServiceImpl implements LanguageService{
 		if (languageDb.isPresent()) {
 			Language languageUpdate = languageDb.get();
 			languageUpdate.setId(language.getId());
-			languageUpdate.setCode(language.getCode());
 			languageUpdate.setName(language.getName());
 
 			return languageUpdate;
@@ -60,4 +59,5 @@ public class LanguageServiceImpl implements LanguageService{
 			throw new ResourceNotFoundException("Record not found with id : " + languageId);
 		}
 	}
+
 }

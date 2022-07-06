@@ -6,6 +6,8 @@ import com.example.examenp1.demo.model.Employee;
 
 public interface EmployeeService {
 
+	Employee createEmployee(Employee employee);
+	
 	Employee updateEmployee(Employee employee);
 	
 	List<Employee> getAllEmployee();
